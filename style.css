@@ -1,0 +1,570 @@
+/* Variables for color scheme */
+:root {
+    --primary-color: #4caf50;
+    --primary-dark: #388e3c;
+    --primary-light: #c8e6c9;
+    --accent-color: #ff9800;
+    --text-light: #333;
+    --text-dark: #f5f5f5;
+    --bg-light: #f9f9f9;
+    --bg-dark: #222;
+    --card-light: #fff;
+    --card-dark: #333;
+    --border-light: #e0e0e0;
+    --border-dark: #555;
+    --underweight: #64b5f6;
+    --normal: #66bb6a;
+    --overweight: #ffa726;
+    --obese: #ef5350;
+}
+/* Add this to your existing CSS */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-light);
+    outline: none;
+}
+/* Dark Mode Variables */
+.dark-mode {
+    --text-light: #f5f5f5;
+    --bg-light: #222;
+    --card-light: #333;
+    --border-light: #555;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+header h1 {
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 2rem;
+}
+
+.dark-mode-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.dark-mode-toggle:hover {
+    transform: rotate(30deg);
+}
+
+section {
+    background-color: var(--card-light);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.intro h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+.intro p, .intro ul {
+    margin-bottom: 15px;
+}
+
+.intro ul {
+    padding-left: 20px;
+}
+
+.intro li {
+    margin-bottom: 5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+input[type="number"], select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="number"]:focus, select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-light);
+    outline: none;
+}
+
+.height-input, .weight-input {
+    display: flex;
+    gap: 10px;
+}
+
+.height-input input, .weight-input input {
+    flex: 2;
+}
+
+.height-input select, .weight-input select {
+    flex: 1;
+}
+
+.gender-selection {
+    display: flex;
+    gap: 20px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.calculate-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.calculate-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.calculate-btn:active {
+    transform: translateY(0);
+}
+
+.result-box {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: var(--primary-light);
+    transition: background-color 0.3s;
+}
+
+.bmi-value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+}
+
+.bmi-category {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.meter-container {
+    position: relative;
+    margin: 40px 0;
+    height: 50px;
+}
+.meter {
+    display: flex;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.meter-segment {
+    flex: 1;
+    text-align: center;
+    font-size: 0.8rem;
+    line-height: 20px;
+    color: white;
+    font-weight: 600;
+}
+
+.underweight {
+    background-color: var(--underweight);
+}
+
+.normal {
+    background-color: var(--normal);
+}
+
+.overweight {
+    background-color: var(--overweight);
+}
+
+.obese {
+    background-color: var(--obese);
+}
+
+.meter-pointer {
+    position: absolute;
+    left: 50%;
+    top: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--accent-color);
+    transform: translateX(-50%);
+    transition: left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 2px solid var(--border-light);
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.3s;
+    color: var(--text-light);
+}
+
+.tab-btn.active {
+    border-bottom-color: var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.tab-pane {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.history-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+.clear-btn {
+    padding: 8px 16px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.clear-btn:hover {
+    background-color: #d32f2f;
+}
+
+.history-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+}
+
+.history-item {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-light);
+    transition: background-color 0.3s;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-item:hover {
+    background-color: var(--primary-light);
+}
+
+.history-date {
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.history-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.history-bmi {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.empty-history {
+    padding: 20px;
+    text-align: center;
+    color: #777;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* Diet and Workout Plans Styling */
+.meal-plan, .workout-plan {
+    margin-bottom: 20px;
+}
+
+.meal-plan h4, .workout-plan h4 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.meal-plan ul, .workout-plan ul {
+    padding-left: 20px;
+}
+
+.meal-plan li, .workout-plan li {
+    margin-bottom: 5px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .gender-selection {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .height-input, .weight-input {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .bmi-value {
+        font-size: 2rem;
+    }
+    
+    .bmi-category {
+        font-size: 1.2rem;
+    }
+}
+/* Add these to your existing CSS */
+.recommendation-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.recommendation-link {
+    padding: 12px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.recommendation-link:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.back-btn {
+    padding: 8px 15px;
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 15px;
+}
+
+.back-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.diet-plan, .workout-plan {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: var(--primary-light);
+    border-radius: 8px;
+}
+
+.diet-plan h3, .workout-plan h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.diet-plan h4, .workout-plan h4 {
+    color: var(--primary-dark);
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.diet-plan ul, .workout-plan ul {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.diet-plan li, .workout-plan li {
+    margin-bottom: 8px;
+}
+
+/* Ensure smooth transitions for all elements */
+* {
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+/* Add these to your existing CSS */
+.recommendation-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.recommendation-link {
+    padding: 12px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.recommendation-link:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.back-btn {
+    padding: 8px 15px;
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 15px;
+}
+
+.back-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.diet-plan, .workout-plan {
+    padding: 20px;
+    background-color: var(--primary-light);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.diet-plan h3, .workout-plan h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.diet-plan h4, .workout-plan h4 {
+    color: var(--primary-dark);
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.diet-plan ul, .workout-plan ul {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.diet-plan li, .workout-plan li {
+    margin-bottom: 8px;
+}

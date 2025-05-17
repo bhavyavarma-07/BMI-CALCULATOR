@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="light-mode">
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-heartbeat"></i> BMI Calculator</h1>
+            <button id="darkModeToggle" class="dark-mode-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <section class="intro">
+            <h2>What is BMI?</h2>
+            <p>Body Mass Index (BMI) is a measurement of a person's weight with respect to their height. It is a screening tool that can indicate whether a person has a healthy body weight for their height. BMI is calculated by dividing a person's weight in kilograms by the square of their height in meters.</p>
+            <p>BMI Categories:</p>
+            <ul>
+                <li><strong>Underweight:</strong> BMI less than 18.5</li>
+                <li><strong>Normal weight:</strong> BMI between 18.5 and 24.9</li>
+                <li><strong>Overweight:</strong> BMI between 25 and 29.9</li>
+                <li><strong>Obesity:</strong> BMI of 30 or greater</li>
+            </ul>
+            <p>Note: BMI is a general guideline and does not account for factors such as muscle mass, bone density, and overall body composition.</p>
+        </section>
+
+        <section class="calculator">
+            <h2>Calculate Your BMI</h2>
+            <form id="bmiForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <div class="gender-selection">
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="male" checked> Male
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="female"> Female
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" min="2" max="120" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="height">Height:</label>
+                    <div class="height-input">
+                        <input type="number" id="height" name="height" step="0.01" required>
+                        <select id="heightUnit">
+                            <option value="cm">Centimeters</option>
+                            <option value="m">Meters</option>
+                            <option value="ft">Feet</option>
+                            <option value="in">Inches</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="weight">Weight:</label>
+                    <div class="weight-input">
+                        <input type="number" id="weight" name="weight" 
+                        step="0.01" required>
+                        <select id="weightUnit">
+                            <option value="kg">Kilograms</option>
+                            <option value="lb">Pounds</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="calculate-btn">Calculate BMI</button>
+            </form>
+        </section>
+
+        <section class="results" id="results" style="display: none;">
+            <h2>Your BMI Results</h2>
+            <div class="result-box">
+                <div class="bmi-value" id="bmiValue"></div>
+                <div class="bmi-category" id="bmiCategory"></div>
+            </div>
+            <div class="meter-container">
+                <div class="meter">
+                    <div class="meter-segment underweight">Underweight</div>
+                    <div class="meter-segment normal">Normal</div>
+                    <div class="meter-segment overweight">Overweight</div>
+                    <div class="meter-segment obese">Obese</div>
+                </div>
+                <div class="meter-pointer" id="meterPointer"></div>
+                <!-- Add this inside the results section (after the meter container) -->
+                     <div class="recommendation-links">
+                        <a href="diet.html" class="recommendation-link" id="dietLink">Get Diet Recommendations</a>
+                        <a href="workout.html" class="recommendation-link" id="workoutLink">Get
+Workout Recommendations</a>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="history">
+        <h2>BMI History</h2>
+        <div class="history-controls">
+            <button id="clearHistory" class="clear-btn">Clear History</button>
+        </div>
+        <div id="historyList" class="history-list">
+            <div class="empty-history">No history records yet</div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>Disclaimer: This BMI calculator is for informational purposes only and is not a substitute for professional medical advice.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+

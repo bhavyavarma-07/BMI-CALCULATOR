@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Recommendations</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="light-mode">
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-utensils"></i> Diet Recommendations</h1>
+            <button id="darkModeToggle" class="dark-mode-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Calculator</a>
+        </header>
+
+        <section class="diet-recommendations">
+            <h2>Your Personalized Diet Plan</h2>
+            <div id="diet-content"></div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Disclaimer: These diet recommendations are for informational purposes only and are not a substitute for professional medical advice.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const category = localStorage.getItem('bmiCategory') || 'Normal Weight';
+            const dietContent = document.getElementById('diet-content');
+            
+            if (category === 'Underweight') {
+                dietContent.innerHTML = `
+                    <div class="diet-plan">
+                        <h3>Underweight Diet Plan</h3>
+                        <h4>Calorie Goal: Surplus of 300-500 calories per day</h4>
+                        <p>Focus on nutrient-dense foods that help healthy weight gain.</p>
+                        
+                        <h4>Breakfast</h4>
+                        <ul>
+                            <li>Whole grain cereal with full-fat milk</li>
+                            <li>Smoothie made with fruits, nuts, and greek yogurt</li>
+                            <li>Toast with avocado and eggs</li>
+                        </ul>
+                        
+                        <h4>Lunch</h4>
+                        <ul>
+                            <li>Sandwich with lean protein, cheese, and healthy fats</li>
+                            <li>Pasta with olive oil and protein</li>
+                            <li>Rice bowl with lean meat and vegetables</li>
+                        </ul>
+                        
+                        <h4>Dinner</h4>
+                        <ul>
+                            <li>Protein-rich meals (chicken, fish, tofu)</li>
+                            <li>Include starchy vegetables or grains</li>
+                            <li>Use healthy oils for cooking</li>
+                        </ul>
+                        
+                        <h4>Snacks (2-3 per day)</h4>
+                        <ul>
+                            <li>Nuts and seeds</li>
+                            <li>Greek yogurt with honey</li>
+                            <li>Protein shakes</li>
+                            <li>Dried fruits and nuts mix</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (category === 'Normal Weight') {
+                dietContent.innerHTML = `
+                    <div class="diet-plan">
+                        <h3>Normal Weight Diet Plan</h3>
+                        <h4>Calorie Goal: Maintenance (balance intake with expenditure)</h4>
+                        <p>Focus on balanced nutrition to maintain your healthy weight.</p>
+                        
+                        <h4>Breakfast</h4>
+                        <ul>
+                            <li>Overnight oats with fruits and nuts</li>
+                            <li>Egg white omelette with vegetables</li>
+                            <li>Whole grain toast with peanut butter</li>
+                        </ul>
+                        
+                        <h4>Lunch</h4>
+                        <ul>
+                            <li>Green salad with lean protein</li>
+                            <li>Whole grain wrap with vegetables and lean meat</li>
+                            <li>Vegetable soup with side of protein</li>
+                        </ul>
+                        
+                        <h4>Dinner</h4>
+                        <ul>
+                            <li>Balanced plate: 1/4 protein, 1/4 complex carbs, 1/2 vegetables</li>
+                            <li>Grilled fish with roasted vegetables</li>
+                            <li>Stir-fry with lean protein and lots of vegetables</li>
+                        </ul>
+                        
+                        <h4>Snacks (1-2 per day)</h4>
+                        <ul>
+                            <li>Fresh fruit</li>
+                            <li>Small handful of nuts</li>
+                            <li>Greek yogurt</li>
+                            <li>Vegetable sticks with hummus</li>
+                        </ul>
+                    </div>
+                `;
+            } else {
+                dietContent.innerHTML = `
+                    <div class="diet-plan">
+                        <h3>Overweight/Obese Diet Plan</h3>
+                        <h4>Calorie Goal: Moderate deficit of 300-500 calories per day</h4>
+                        <p>Focus on nutrient-dense, low-calorie foods that keep you satisfied.</p>
+                        
+                        <h4>Breakfast</h4>
+                        <ul>
+                            <li>Egg whites with vegetables</li>
+                            <li>Greek yogurt with berries</li>
+                            <li>Overnight oats with protein powder</li>
+                        </ul>
+                        
+                        <h4>Lunch</h4>
+                        <ul>
+                            <li>Large salad with lean protein and light dressing</li>
+                            <li>Vegetable soup with small serving of protein</li>
+                            <li>Lettuce wraps with lean protein fillings</li>
+                        </ul>
+                        
+                        <h4>Dinner</h4>
+                        <ul>
+                            <li>Lean protein (chicken, fish, tofu)</li>
+                            <li>Large portion of non-starchy vegetables</li>
+                            <li>Small portion of complex carbs (quinoa, brown rice)</li>
+                        </ul>
+                        
+                        <h4>Snacks (1-2 per day)</h4>
+                        <ul>
+                            <li>Vegetable sticks</li>
+                            <li>Small piece of fruit</li>
+                            <li>Small handful of nuts</li>
+                            <li>Low-fat Greek yogurt</li>
+                        </ul>
+                        
+                        <h4>Hydration</h4>
+                        <ul>
+                            <li>Drink at least 8 glasses of water daily</li>
+                            <li>Herbal teas</li>
+                            <li>Avoid sugary drinks and limit alcohol</li>
+                        </ul>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

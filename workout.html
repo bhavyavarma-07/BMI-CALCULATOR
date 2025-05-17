@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Recommendations</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="light-mode">
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-dumbbell"></i> Workout Recommendations</h1>
+            <button id="darkModeToggle" class="dark-mode-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Calculator</a>
+        </header>
+
+        <section class="workout-recommendations">
+            <h2>Your Personalized Workout Plan</h2>
+            <div id="workout-content"></div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Disclaimer: These workout recommendations are for informational purposes only and are not a substitute for professional medical advice.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const category = localStorage.getItem('bmiCategory') || 'Normal Weight';
+            const gender = localStorage.getItem('userGender') || 'male';
+            const age = localStorage.getItem('userAge') || 30;
+            const workoutContent = document.getElementById('workout-content');
+            
+            let intensityLevel = '';
+            if (age < 18) {
+                intensityLevel = 'Low to Moderate';
+            } else if (age < 40) {
+                intensityLevel = 'Moderate to High';
+            } else if (age < 65) {
+                intensityLevel = 'Moderate';
+            } else {
+                intensityLevel = 'Low to Moderate';
+            }
+            
+            if (category === 'Underweight') {
+                workoutContent.innerHTML = `
+                    <div class="workout-plan">
+                        <h3>Underweight Workout Plan</h3>
+                        <h4>Goal: Build muscle mass and strength</h4>
+                        <p>Intensity Level: ${intensityLevel}</p>
+                        <p>Focus on strength training with adequate rest for recovery and muscle growth.</p>
+                        
+                        <h4>Weekly Plan:</h4>
+                        <ul>
+                            <li><strong>3-4 days:</strong> Strength training (focus on compound movements)</li>
+                            <li><strong>2 days:</strong> Light cardio (walking, swimming)</li>
+                            <li><strong>2-3 days:</strong> Rest days for recovery</li>
+                        </ul>
+                        
+                        <h4>Strength Training:</h4>
+                        <ul>
+                            <li>Start with bodyweight exercises if new to training</li>
+                            <li>Progress to free weights when comfortable</li>
+                            <li>Focus on exercises like squats, deadlifts, bench press, rows</li>
+                            <li>Aim for 3-4 sets of 8-12 repetitions</li>
+                            <li>Rest 1-2 minutes between sets</li>
+                        </ul>
+                        
+                        <h4>Important Notes:</h4>
+                        <ul>
+                            <li>Ensure proper form to prevent injuries</li>
+                            <li>Increase caloric intake to support muscle growth</li>
+                            <li>Consider working with a trainer initially</li>
+                            <li>Focus on progressive overload (gradually increasing weight)</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (category === 'Normal Weight') {
+                workoutContent.innerHTML = `
+                    <div class="workout-plan">
+                        <h3>Normal Weight Workout Plan</h3>
+                        <h4>Goal: Maintain fitness and build strength</h4>
+                        <p>Intensity Level: ${intensityLevel}</p>
+                        <p>Focus on a balanced approach of cardio, strength, and flexibility.</p>
+                        
+                        <h4>Weekly Plan:</h4>
+                        <ul>
+                            <li><strong>2-3 days:</strong> Strength training</li>
+                            <li><strong>2-3 days:</strong> Cardiovascular exercise</li>
+                            <li><strong>1-2 days:</strong> Flexibility/mobility work (yoga, stretching)</li>
+                            <li><strong>1-2 days:</strong> Rest or active recovery</li>
+                        </ul>
+                        
+                        <h4>Sample Workout:</h4>
+                        <ul>
+                            <li><strong>Monday:</strong> Upper body strength + 15 min cardio</li>
+                            <li><strong>Tuesday:</strong> 30 min cardio (running, cycling, swimming)</li>
+                            <li><strong>Wednesday:</strong> Lower body strength + core</li>
+                            <li><strong>Thursday:</strong> Rest or light activity</li>
+                            <li><strong>Friday:</strong> Full body strength circuit</li>
+                            <li><strong>Saturday:</strong> Longer cardio session (45+ min)</li>
+                            <li><strong>Sunday:</strong> Yoga or active recovery</li>
+                        </ul>
+                    </div>
+                `;
+            } else {
+                workoutContent.innerHTML = `
+                    <div class="workout-plan">
+                        <h3>Overweight/Obese Workout Plan</h3>
+                        <h4>Goal: Improve cardiovascular health and gradually lose weight</h4>
+                        <p>Intensity Level: ${intensityLevel}</p>
+                        <p>Focus on consistency and gradually increasing intensity as fitness improves.</p>
+                        
+                        <h4>Weekly Plan:</h4>
+                        <ul>
+                            <li><strong>3-5 days:</strong> Cardiovascular exercise</li>
+                            <li><strong>2-3 days:</strong> Strength training</li>
+                            <li><strong>1-2 days:</strong> Active recovery (walking, stretching)</li>
+                        </ul>
+                        
+                        <h4>Starting Point:</h4>
+                        <ul>
+                            <li>Begin with walking 15-30 minutes daily</li>
+                            <li>Add basic bodyweight exercises (modified if needed)</li>
+                            <li>Focus on movements that feel comfortable</li>
+                            <li>Gradually increase duration before intensity</li>
+                        </ul>
+                        
+                        <h4>Progression (after 2-4 weeks):</h4>
+                        <ul>
+                            <li>Introduce interval training (alternate walking/jogging)</li>
+                            <li>Add resistance bands or light weights</li>
+                            <li>Try low-impact activities like swimming or cycling</li>
+                            <li>Consider working with a fitness professional</li>
+                        </ul>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
